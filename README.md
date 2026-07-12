@@ -65,13 +65,21 @@ Follow these steps to run the application locally:
 
 ```bash
 git clone <your-github-repository-link>
-2. Navigate to the Project Directory
+### 2. Navigate to the Project Directory
+
+```bash
 cd TextSummarizerApp
-3. Install Dependencies
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
-4. Start the FastAPI Server
+### 4. Start the FastAPI Server
+
+```bash
 uvicorn app:app --reload
-5. Open the Application
+### 5. Open the Application
+
+```bash
 After successfully starting the FastAPI server, a local URL will be displayed in the terminal.
 
 Open the provided URL in your web browser to access the AI Text Summarizer application.
