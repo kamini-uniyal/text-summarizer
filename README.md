@@ -1,39 +1,64 @@
-# Text Summarizer
+# AI Text Summarizer
 
 ## Overview
-This is a Text Summarization web application built using FastAPI and the T5 Transformer model. It generates concise summaries from long pieces of text using Natural Language Processing (NLP).
+
+AI Text Summarizer is a Natural Language Processing (NLP) web application that generates concise summaries from long text inputs. The application uses the T5 Transformer model from Hugging Face and provides a simple web interface for users to summarize content efficiently.
+
+The project demonstrates the use of Transformer-based deep learning models for automated text summarization.
 
 ## Features
-- Summarizes long text into shorter summaries
-- FastAPI-based web application
-- User-friendly web interface
-- Transformer-based text summarization using T5
+
+- Summarizes long text into concise and meaningful summaries
+- Built using FastAPI for backend API development
+- User-friendly web interface for entering text
+- Uses a pre-trained T5 Transformer model for NLP-based summarization
+- Fast and efficient summary generation
+
+## Demo Screenshot
+
+![AI Text Summarizer Demo](screenshots/text-summarizer-demo.png)
+
+## Model Used
+
+This project uses the **T5 (Text-To-Text Transfer Transformer)** model for text summarization.
+
+The model is based on the Hugging Face Transformers library and is designed to perform various NLP tasks by converting input text into a summarized output.
+
+> **Note:** The trained model files are not included in this repository because they exceed GitHub's file size limitations. The required model can be downloaded through the Hugging Face Transformers library during execution.
 
 ## Tech Stack
-- Python
-- FastAPI
-- PyTorch
-- Hugging Face Transformers
-- HTML
+
+- **Programming Language:** Python
+- **Backend Framework:** FastAPI
+- **Deep Learning Framework:** PyTorch
+- **NLP Model:** Hugging Face Transformers (T5)
+- **Frontend:** HTML/CSS
+
+## How It Works
+
+1. User enters a long piece of text through the web interface.
+2. The text is sent to the FastAPI backend.
+3. The T5 Transformer model processes the input using NLP techniques.
+4. The model generates a concise summary.
+5. The summarized output is displayed to the user.
 
 ## Project Structure
-```
+
+```text
 TextSummarizerApp/
+│
 ├── app.py
+├── requirements.txt
+├── screenshots/
+│   └── text-summarizer-demo.png
 ├── templates/
 │   └── index.html
 ├── README.md
 └── .gitignore
+
 ```
+## Author
 
-## How to Run
-1. Clone the repository.
-2. Install the required dependencies.
-3. Run:
-   ```
-   python app.py
-   ```
-4. Open the application in your browser.
+**Kamini Uniyal**
 
-## Note
-The trained model (`saved_summary_model`) is not included in this repository because it exceeds GitHub's file size limit.
+GitHub: [@kamini-uniyal](https://github.com/kamini-uniyal)
