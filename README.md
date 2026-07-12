@@ -32,7 +32,7 @@ The model is based on the Hugging Face Transformers library and is designed to p
 - **Backend Framework:** FastAPI
 - **Deep Learning Framework:** PyTorch
 - **NLP Model:** Hugging Face Transformers (T5)
-- **Frontend:** HTML/CSS
+- **Frontend:** HTML/CSS/JavaScript
 
 ## How It Works
 
@@ -57,6 +57,26 @@ TextSummarizerApp/
 └── .gitignore
 
 ```
+## How to Run
+
+Follow these steps to run the application locally:
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-github-repository-link>
+2. Navigate to the Project Directory
+cd TextSummarizerApp
+3. Install Dependencies
+pip install -r requirements.txt
+4. Start the FastAPI Server
+uvicorn app:app --reload
+5. Open the Application
+After successfully starting the FastAPI server, a local URL will be displayed in the terminal.
+
+Open the provided URL in your web browser to access the AI Text Summarizer application.
+
+
 ## Author
 
 **Kamini Uniyal**
