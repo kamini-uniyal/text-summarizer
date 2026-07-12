@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+
+    <style>
+
+    
+    body{
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #0F172A, #111827, #1E293B);
+        color: #F8FAFC;
+    }
+
+    .container{
+        max-width: 720px;
+        margin: 50px auto;
+        padding: 35px;
+        background: #1E293B;
+        border-radius: 18px;
+        box-shadow: 0 12px 35px rgba(16,185,129,0.25);
+    }
+
+    h1{
+        text-align: center;
+        color: #10B981;
+        font-size: 46px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    h3{
+        text-align: center;
+        color: #CBD5E1;
+        font-size: 22px;
+        margin-top: 0;
+        margin-bottom: 35px;
+        font-weight: 500;
+    }
+
+    p{
+        color: #E2E8F0;
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    textarea{
+        height: 220px;
+        padding: 16px;
+        font-size: 17px;
+        color: white;
+        background: #0F172A;
+        border: 2px solid #334155;
+        border-radius: 12px;
+        outline: none;
+    }
+
+    textarea::placeholder{
+        color: #94A3B8;
+    }
+
+    textarea:focus{
+        border-color: #10B981;
+    }
+
+    button{
+        background: #10B981;
+        color: white;
+        border: none;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: 0.3s ease;
+    }
+
+    button:hover{
+        background: #059669;
+        transform: translateY(-2px);
+    }
+
+    #summary-output{
+        margin-top: 25px;
+        background: #0F172A;
+        border: 2px solid #10B981;
+        border-radius: 12px;
+        padding: 20px;
+    }
+
+    #summary-heading{
+        text-align: center;
+        color: #10B981;
+        font-size: 30px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    #summary-text{
+        color: #F1F5F9;
+        font-size: 18px;
+        line-height: 1.7;
+    }
+
+</style>
+
+
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Text Summarizer</h1>
+        <h3>using HuggingFace Transformer</h3>
+        <p>Write or Paste your content below for quick summarization.</p>
+
+        <form id="summarization-form">
+            <textarea id="dialogue-input" placeholder="Enter your content here..." required></textarea>
+            <button type="submit">Summarize</button>
+        </form>
+
+        <div id="summary-output">
+            <h3 id="summary-heading">Content Summary</h3>
+            <p id="summary-text"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("summarization-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+        
+            const dialogueInput = document.getElementById("dialogue-input");
+            const summaryText = document.getElementById("summary-text");
+            const submitButton = e.target.querySelector("button");
+        
+            const dialogue = dialogueInput.value.trim();
+            if (!dialogue) return;
+        
+            summaryText.innerText = "Processing...";
+            submitButton.disabled = true;
+        
+            try {
+                const response = await fetch("/summarize/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ dialogue }),
+                });
+        
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+        
+                const data = await response.json();
+                summaryText.innerText = data.summary || "No summary returned.";
+            } catch (err) {
+                
+                summaryText.innerText = `Error: ${err.message}`;
+            } finally {
+                
+                submitButton.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
