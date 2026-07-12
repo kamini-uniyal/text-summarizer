@@ -64,7 +64,7 @@ Follow these steps to run the application locally:
 ### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/kamini-uniyal/text-summarizer>
+git clone https://github.com/kamini-uniyal/text-summarizer
 ```
 
 ### 2. Navigate to the Project Directory
